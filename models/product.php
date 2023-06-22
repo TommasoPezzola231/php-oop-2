@@ -1,6 +1,10 @@
 <?php 
 
+    require __DIR__ . "/../traits/Brand.php";
     class Product {
+
+        use Brand;
+
         public $name;
         public $price;
         public $img;

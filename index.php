@@ -8,13 +8,15 @@
     $cane = new Category ("Per cani");
     $gatto = new Category("Per gatti");
     $biscotti = new Food ("Biscotti per cani", 20, "https://arcaplanet.vtexassets.com/arquivos/ids/273530-1800-1800/pedigree-biscrock-gravy-bones.jpg?v=1773755651&quality=1&width=1800&height=1800", $cane, "Cibo");
+    $biscotti->setBrandName("Pedigree");
     //var_dump($biscotti);
 
     $cucciaXL = new Cuccia("Cuccia XL per cani di taglia grande", 150, "https://arcaplanet.vtexassets.com/arquivos/ids/261682-1800-1800/ferplast-baita-cuccia-in-legno-cane.jpg?v=1773706606&quality=1&width=1800&height=1800", $cane, "Cuccia");
     //var_dump($cucciaXL);
 
     $spazzola = new Product("Spazzola per gatti a pelo corto", 35, "https://arcaplanet.vtexassets.com/arquivos/ids/253072-1800-1800/furminator-deshedding-gatti-piccoli-pelo-corto-600x600.jpg?v=1773741295&quality=1&width=1800&height=1800", $gatto);
-
+    $spazzola->setBrandName("Pedigree");
+    
     $pallina = new Game("Pallina con sonaglio", 1.30, "https://arcaplanet.vtexassets.com/arquivos/ids/269847-1800-1800/yes-pallina-con-sonaglio-4.5cm.jpg?v=1773698733&quality=1&width=1800&height=1800", $gatto, "Gioco");
 
     $products = [ $cucciaXL, $biscotti, $pallina, $spazzola, $cucciaXL, $biscotti ]
@@ -47,11 +49,12 @@
                 <img src="<?= $product->img ?>" class="card-img-top" alt="<?= $product->name ?>">
                 <div class="card-body">
                     <h5 class="card-title"><?= $product->name ?></h5>
+                    <h6> <?= $product->getBrandName() ?> </h6>
                     <p class="card-text">
                         <div><?= $product->price ?>€</div>
                         <div>Categoria: <?= $product->category->name ?> </div>
                         
-                        <?php  if ($product->type) { ?>
+                        <?php  if ($product instanceof Game || $product instanceof Cuccia|| $product instanceof Food) { ?>
                                 <div>Tipo: <?= $product->type ?></div>
                         <?php } ?>
                             
