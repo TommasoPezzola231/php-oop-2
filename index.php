@@ -49,7 +49,15 @@
                 <img src="<?= $product->img ?>" class="card-img-top" alt="<?= $product->name ?>">
                 <div class="card-body">
                     <h5 class="card-title"><?= $product->name ?></h5>
-                    <h6> <?= $product->getBrandName() ?> </h6>
+                    <h6> 
+                        <?php
+                            try{
+                               echo $product->getBrandName();
+                            } catch (Exception $e) {
+                                echo $e->getMessage();
+                            }
+                        ?> 
+                    </h6>
                     <p class="card-text">
                         <div><?= $product->price ?>€</div>
                         <div>Categoria: <?= $product->category->name ?> </div>

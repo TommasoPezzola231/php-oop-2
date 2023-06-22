@@ -4,6 +4,10 @@
         private $brandName;
 
         public function getBrandName() {
+
+            if (is_null($this->brandName)) {
+                throw new Exception("Marca non indicata");
+            }
             return $this->brandName;
         }
 
